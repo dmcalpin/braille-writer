@@ -1,0 +1,22 @@
+.Keyboard {
+    vertical-align: top;
+}
+.key {
+    color: transparent;
+    background-color: #646464;
+    margin: .5rem;  
+}
+.key:active{
+    background-color: #4d4d4d;
+}
+
+.wide-key {
+    width: 9rem;
+    height: 3rem;
+}
+
+.circular-key {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Paper.css'
 
 type paperProps = {
     children: any
@@ -6,6 +7,6 @@ type paperProps = {
 
 export function Paper(props: paperProps) {
     return (
-        <output>{props.children}</output>
+        <textarea className="Paper" value={props.children} />
     )
 }

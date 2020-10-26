@@ -5,10 +5,22 @@ import { Paper } from './components/Paper'
 
 function App() {
   const [output, setOutput] = useState<string>("")
+
+  function onType(cell: string) {
+    if (cell === "\b") {
+      let updatedOutput = output?.split("")
+      updatedOutput.pop()
+      setOutput(updatedOutput.join(""))
+    } else {
+      setOutput(output + cell);
+    }
+    document.querySelector("textarea")?.focus()
+  }
+
   return (
     <div className="App">
       <Paper>{output}</Paper>
-      <Keyboard onType={(str: string) => { setOutput(output + str); console.log(str) }}></Keyboard>
+      <Keyboard onType={(str: string) => { onType(str) }}></Keyboard>
     </div>
   );
 }
