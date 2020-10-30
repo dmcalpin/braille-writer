@@ -4,3 +4,17 @@
     text-align: left;
     padding: 1rem;
 }
+
+.cell {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.placeholder {
+    width: 2rem;
+    display: inline-block;
+}
+
+.active {
+    outline: 2px dashed #000;
+}

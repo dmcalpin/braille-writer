@@ -14,12 +14,11 @@ function App() {
     } else {
       setOutput(output + cell);
     }
-    document.querySelector("textarea")?.focus()
   }
 
   return (
     <div className="App">
-      <Paper>{output}</Paper>
+      <Paper braille={output} />
       <Keyboard onType={(str: string) => { onType(str) }}></Keyboard>
     </div>
   );
