@@ -3,11 +3,15 @@
     background-color: #fcf7d8;
     text-align: left;
     padding: 1rem;
+    overflow: auto;
 }
 
 .cell {
     display: inline-flex;
     flex-direction: column;
+}
+.cell span {
+    text-align: center;
 }
 
 .placeholder {

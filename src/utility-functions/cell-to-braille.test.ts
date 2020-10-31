@@ -53,3 +53,7 @@ it('identifies strong contractions', () => {
     expect(cellToBraille([false, true, true, true, false, true])).toEqual('⠮') // the
     expect(cellToBraille([false, true, true, true, true, true])).toEqual('⠾')  // with
 })
+
+it('identifies empty cells', () => {
+    expect(cellToBraille([false, false, false, false, false, false])).toEqual('⠀') // braille space
+})

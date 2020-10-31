@@ -1,4 +1,4 @@
-import React, { ReactChildren } from 'react';
+import React from 'react';
 import { cellToText } from '../utility-functions/cell-to-text'
 import './Paper.css'
 
@@ -7,19 +7,21 @@ type paperProps = {
 }
 
 function renderBraille(braille: string) {
-    return braille.split("").map((char: string) => {
-        {
+    let previous: string
+    return (<span className="word" key={braille}>
+        {braille.split("").map((char: string, index: number, elems: string[]) => {
             if (char === "\n") {
                 return <hr />
             } else {
-                return (<span className="cell">
+                let cell = (<span className="cell" key={index}>
                     <span>{char}</span>
-                    <span>{cellToText(char)}</span>
+                    <span>{cellToText(char, previous, elems[index + 1])}</span>
                 </span>)
+                previous = char
+                return cell
             }
-        }
-
-    })
+        })}
+    </span>)
 }
 
 export function Paper(props: paperProps) {
