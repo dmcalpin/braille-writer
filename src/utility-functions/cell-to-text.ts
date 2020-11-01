@@ -46,14 +46,15 @@ const unprefixed: { [key: string]: string } = {
     '⠵': 'z',
 
     // Other
-    '⠂': ',', // Comma
-    '⠆': ";", // Semi-Colon
-    '⠒': ":", // Colon
-    '⠲': '.', // Period
-    '⠖': '!', // Exlamation
-    '⠀': ' ', // Braille space
+    '⠂': ',',  // Comma
+    '⠆': ";",  // Semi-Colon
+    '⠒': ":",  // Colon
+    '⠲': '.',  // Period
+    '⠖': '!',  // Exlamation
+    '⠄': '\'', // Apostrophe
+    '⠀': ' ',  // Braille space
 
-    '⠼': '#' // Number Indicator
+    '⠼': '#'   // Number Indicator
 }
 
 const capital: { [key: string]: string } = {

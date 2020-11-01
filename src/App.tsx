@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Keyboard } from './components/Keyboard'
+import { initRealKeyboard } from './utility-functions/real-keyboard'
 import { Paper } from './components/Paper'
 
-function App() {
+
+
+const App = React.memo(() => {
+  useEffect(() => {
+    console.log("USE EFFECT")
+    initRealKeyboard({ onType })
+  })
+
   const [output, setOutput] = useState<string>("")
 
   function onType(cell: string) {
@@ -22,6 +30,6 @@ function App() {
       <Keyboard onType={(str: string) => { onType(str) }}></Keyboard>
     </div>
   );
-}
+})
 
 export default App;

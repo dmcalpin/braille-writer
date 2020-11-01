@@ -82,5 +82,15 @@ it('hides indicators', () => {
     expect(cellToText('⠼', undefined, '⠊')).toEqual('')
     expect(cellToText('⠼', undefined, '⠚')).toEqual('')
     expect(cellToText('⠼', '⠼', '⠁')).toEqual('') // sequential #s
+})
 
+it('does punctuation', () => {
+    expect(cellToText('⠂')).toEqual(',')  // Comma
+    expect(cellToText('⠆')).toEqual(";")  // Semi-Colon
+    expect(cellToText('⠒')).toEqual(":")  // Colon
+    expect(cellToText('⠲')).toEqual('.')  // Period
+    expect(cellToText('⠖')).toEqual('!')  // Exlamation
+    expect(cellToText('⠄')).toEqual('\'') // Apostrophe
+    expect(cellToText('⠀')).toEqual(' ')  // Braille space
+    expect(cellToText('⠼')).toEqual('#')  // Number sign
 })
