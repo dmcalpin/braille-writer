@@ -1,4 +1,28 @@
-# Getting Started with Create React App
+# Braille Writer
+This app is a simulator for a physical braille writer. While it's best to learn braille using a regular braille writer, in certain cases it's beneficial to have one on a computer or touch screen device.
+
+## Intended Use
+This app is meant to be used be people with all levels of sight. If you are brailling on the go, you can use this app on a tablet. If you can't afford a braille-writer, this app is for you. If a friend or family member is learning braille on a traditional braille writer and you want to learn as well, give this app a try! This app is not meant to replace a traditional braille writer, but to provide options for the times one cannot be used.
+
+## Supported Devices
+### Tablets
+On a tablet, position the devices in landscape mode, and press on the keys just as you would a traditional braille writer
+
+### Desktop/Laptop
+For non-touch devices, I've added keyboard support to simulate buttton pressing. Place your hands in normal typing position (pointer fingers on the F and J keys).
+
+Keys are as follows:
+1 Dot: F
+2 Dot: D
+3 Dot: S
+4 Dot: J
+5 Dot: K
+6 Dot: L
+Space: Spacebar
+Backspace: Backspace
+Newline + Carriage Return: Enter
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
