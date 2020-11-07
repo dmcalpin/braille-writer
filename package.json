@@ -2,6 +2,7 @@
   "name": "braille-writer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/mcalpine.io/braille-writer/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
