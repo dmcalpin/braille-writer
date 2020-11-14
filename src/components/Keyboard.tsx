@@ -59,7 +59,7 @@ export function Keyboard(props: keyboardProps) {
                 <CellButton onMouseDown={() => { addDot(4, cell) }} onMouseUp={() => { printCell(cell, props.onType) }}>4</CellButton>
                 <CellButton onMouseDown={() => { addDot(5, cell) }} onMouseUp={() => { printCell(cell, props.onType) }}>5</CellButton>
                 <CellButton onMouseDown={() => { addDot(6, cell) }} onMouseUp={() => { printCell(cell, props.onType) }}>6</CellButton>
-                <button className="circular-key key" onClick={() => { props.onType("\b") }}>Backspace</button>
+                <button className="circular-key key" onClick={() => { props.onType("\b") }}>Back space</button>
             </div>
             <div className="row">
                 <button className="wide-key key" onClick={() => { printCell(newCell(), props.onType) }}>Space</button>

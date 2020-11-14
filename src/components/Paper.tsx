@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { cellToText } from '../utility-functions/cell-to-text'
 import './Paper.css'
 
@@ -22,11 +22,15 @@ function renderBraille(braille: string) {
             }
         })}
     </span>)
+
+
 }
 
 export function Paper(props: paperProps) {
+    const paperRef = useRef(null);
+
     return (
-        <output className="Paper">
+        <output className="Paper" ref={(el) => { el?.scrollTo(0, 1000000000) }}>
             {renderBraille(props.braille)}
             <span className="placeholder active">&nbsp;</span>
         </output>
