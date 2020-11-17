@@ -12,15 +12,15 @@ On a tablet, position the devices in landscape mode, and press on the keys just 
 For non-touch devices, I've added keyboard support to simulate buttton pressing. Place your hands in normal typing position (pointer fingers on the F and J keys).
 
 Keys are as follows:
-1 Dot: F
-2 Dot: D
-3 Dot: S
-4 Dot: J
-5 Dot: K
-6 Dot: L
-Space: Spacebar
-Backspace: Backspace
-Newline + Carriage Return: Enter
+- 1 Dot: F
+- 2 Dot: D
+- 3 Dot: S
+- 4 Dot: J
+- 5 Dot: K
+- 6 Dot: L
+- Space: Spacebar
+- Backspace: Backspace
+- Newline + Carriage Return: Enter
 
 ## Getting Started with Create React App
 
