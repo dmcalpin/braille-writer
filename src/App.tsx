@@ -1,35 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { Keyboard } from './components/Keyboard'
 import { initRealKeyboard } from './utility-functions/real-keyboard'
 import { Paper } from './components/Paper'
 
+function onType(cell: string, app: App) {
+  if (cell === "\b") {
+    let updatedOutput = app.state.output?.split("")
+    updatedOutput.pop()
+    app.setState({
+      ...app.state,
+      output: updatedOutput.join("")
+    })
+  } else {
+    app.setState({
+      output: app.state.output + cell
+    })
+  }
+}
 
+type AppState = {
+  output: string
+}
+type AppProps = {}
 
-const App = React.memo(() => {
-  useEffect(() => {
-    console.log("USE EFFECT")
-    initRealKeyboard({ onType })
-  })
+class App extends React.Component<AppProps, AppState> {
+  constructor(props: AppProps) {
+    super(props)
+    this.state = { output: "" }
 
-  const [output, setOutput] = useState<string>("")
-
-  function onType(cell: string) {
-    if (cell === "\b") {
-      let updatedOutput = output?.split("")
-      updatedOutput.pop()
-      setOutput(updatedOutput.join(""))
-    } else {
-      setOutput(output + cell);
-    }
+  }
+  componentDidMount() {
+    initRealKeyboard({ onType: (str) => { onType(str, this) } })
   }
 
-  return (
-    <div className="App">
-      <Paper braille={output} />
-      <Keyboard onType={(str: string) => { onType(str) }}></Keyboard>
-    </div>
-  );
-})
+  render() {
+    let { output } = this.state
+
+    return (
+      <div className="App">
+        <Paper braille={output} />
+        <Keyboard onType={(str: string) => { onType(str, this) }}></Keyboard>
+      </div >
+    );
+  }
+}
 
 export default App;

@@ -6,6 +6,7 @@ import { Cell } from '../types/cell'
 type realKeyboardProps = {
     // output is a string hook
     onType: (str: string) => void
+
 }
 
 let cellBuffer = newCell()
@@ -24,8 +25,6 @@ function newCell(): Cell {
 }
 
 export function initRealKeyboard(props: realKeyboardProps) {
-    console.log('INIT')
-
     function brailleTypeStart(evt: KeyboardEvent): void {
         let dot: number
         if (typeof (dot = keyToDot[evt.key]) != "undefined") {
@@ -33,7 +32,7 @@ export function initRealKeyboard(props: realKeyboardProps) {
             cellBuffer[dot] = true
         }
 
-        console.log("Keydown", evt.key, cellBuffer)
+        console.log("Keydown", evt.key)
     }
 
     function brailleTypeStop(evt: KeyboardEvent): void {
@@ -54,13 +53,6 @@ export function initRealKeyboard(props: realKeyboardProps) {
             // reset the writer
             brailleCount = 0
             cellBuffer = newCell()
-
-            // only reset if the key caused a rerender
-            if (evt.key === "Backspace" || evt.key === "Enter" || evt.key === " " || typeof keyToDot[evt.key] != "undefined") {
-                // cuz App.tsx re-renders every key stroke... ugh
-                document.removeEventListener("keydown", brailleTypeStart)
-                document.removeEventListener("keyup", brailleTypeStop)
-            }
         }
     }
 

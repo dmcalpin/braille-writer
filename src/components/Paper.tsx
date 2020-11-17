@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { cellToText } from '../utility-functions/cell-to-text'
 import './Paper.css'
 
@@ -11,7 +11,7 @@ function renderBraille(braille: string) {
     return (<span className="word" key={braille}>
         {braille.split("").map((char: string, index: number, elems: string[]) => {
             if (char === "\n") {
-                return <hr />
+                return <hr key={index} />
             } else {
                 let cell = (<span className="cell" key={index}>
                     <span>{char}</span>
@@ -22,13 +22,9 @@ function renderBraille(braille: string) {
             }
         })}
     </span>)
-
-
 }
 
 export function Paper(props: paperProps) {
-    const paperRef = useRef(null);
-
     return (
         <output className="Paper" ref={(el) => { el?.scrollTo(0, 1000000000) }}>
             {renderBraille(props.braille)}
