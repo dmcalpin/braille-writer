@@ -15,7 +15,7 @@ export function cellToBraille(cell: Cell): string {
 
     return binaryToBraille[binaryString] || binaryString
 }
-const binaryToBraille: { [key: string]: string } = {
+export const binaryToBraille: { [key: string]: string } = {
     "": '⠀', // braille space
     "1": '⠁',
     "2": '⠂',

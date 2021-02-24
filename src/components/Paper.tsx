@@ -1,4 +1,5 @@
 import React from 'react';
+import { ElementFlags } from 'typescript';
 import { cellToText } from '../utility-functions/cell-to-text'
 import './Paper.css'
 
@@ -26,7 +27,7 @@ function renderBraille(braille: string) {
 
 export function Paper(props: paperProps) {
     return (
-        <output className="Paper" ref={(el) => { el?.scrollTo(0, 1000000000) }}>
+        <output className="Paper" ref={(el) => { if (el && el.scrollTo) { el?.scrollTo(0, 1000000000) } }}>
             {renderBraille(props.braille)}
             <span className="placeholder active">&nbsp;</span>
         </output>

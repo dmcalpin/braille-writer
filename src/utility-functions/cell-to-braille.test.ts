@@ -31,7 +31,24 @@ it('identifies the basic letters', () => {
     expect(cellToBraille([true, false, true, false, true, true])).toEqual('⠵')      // z
 })
 
-it('identifies strong group signs', () => {
+it('identifies strong contractions', () => {
+    expect(cellToBraille([true, true, true, true, false, true])).toEqual('⠯')  // and
+    expect(cellToBraille([true, true, true, true, true, true])).toEqual('⠿')   // for
+    expect(cellToBraille([true, true, true, false, true, true])).toEqual('⠷')  // of
+    expect(cellToBraille([false, true, true, true, false, true])).toEqual('⠮') // the
+    expect(cellToBraille([false, true, true, true, true, true])).toEqual('⠾')  // with
+})
+
+it('identifies strong wordsigns', () => {
+    expect(cellToBraille([true, false, false, false, false, true])).toEqual('⠡') // child
+    expect(cellToBraille([true, false, false, true, false, true])).toEqual('⠩') // shall
+    expect(cellToBraille([true, false, false, true, true, true])).toEqual('⠹') // this
+    expect(cellToBraille([true, false, false, false, true, true])).toEqual('⠱') // which
+    expect(cellToBraille([true, true, false, false, true, true])).toEqual('⠳') // out
+    expect(cellToBraille([false, false, true, true, false, false])).toEqual('⠌') // still
+})
+
+it('identifies strong groupsigns', () => {
     expect(cellToBraille([true, false, false, false, false, true])).toEqual('⠡') // ch
     expect(cellToBraille([true, false, false, true, false, true])).toEqual('⠩')  // sh
     expect(cellToBraille([true, false, false, true, true, true])).toEqual('⠹')   // th
@@ -46,13 +63,7 @@ it('identifies strong group signs', () => {
     expect(cellToBraille([false, false, true, true, false, true])).toEqual('⠬')  // ing
 })
 
-it('identifies strong contractions', () => {
-    expect(cellToBraille([true, true, true, true, false, true])).toEqual('⠯')  // and
-    expect(cellToBraille([true, true, true, true, true, true])).toEqual('⠿')   // for
-    expect(cellToBraille([true, true, true, false, true, true])).toEqual('⠷')  // of
-    expect(cellToBraille([false, true, true, true, false, true])).toEqual('⠮') // the
-    expect(cellToBraille([false, true, true, true, true, true])).toEqual('⠾')  // with
-})
+
 
 it('identifies empty cells', () => {
     expect(cellToBraille([false, false, false, false, false, false])).toEqual('⠀') // braille space
