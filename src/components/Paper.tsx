@@ -1,5 +1,4 @@
 import React from 'react';
-import { ElementFlags } from 'typescript';
 import { cellToText } from '../utility-functions/cell-to-text'
 import './Paper.css'
 

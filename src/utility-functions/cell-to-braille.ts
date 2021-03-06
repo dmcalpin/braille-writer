@@ -15,6 +15,8 @@ export function cellToBraille(cell: Cell): string {
 
     return binaryToBraille[binaryString] || binaryString
 }
+
+// https://www.compart.com/en/unicode/scripts/Brai
 export const binaryToBraille: { [key: string]: string } = {
     "": '⠀', // braille space
     "1": '⠁',

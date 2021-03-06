@@ -1,5 +1,6 @@
 
 import { wordToText } from './word-to-text'
+import { binaryToBraille as b2b } from './cell-to-braille'
 
 it('identifies the basic letters', () => {
     expect(wordToText('⠁')).toEqual('a')
@@ -43,6 +44,12 @@ it('identifies number', () => {
     expect(wordToText('⠼⠚')).toEqual('0')
 })
 
-it('identifies simple words', () => {
+it('identifies spelled out words', () => {
     expect(wordToText('⠕⠝⠑')).toEqual('one')
+})
+it('identifies simple sentences', () => {
+    expect(wordToText(`⠠⠓⠑⠇⠇⠕⠂,⠀⠍⠽⠀ ⠝⠁⠍⠑⠀⠊⠎⠀⠠⠚⠕⠓⠝⠲.`)).toEqual('Hello, my name is John.')
+})
+it('identifies harder sentences', () => {
+    expect(wordToText(`⠠⠊⠀⠞⠓⠊⠝⠅⠀⠭⠄⠎⠀⠛⠕⠬⠀⠞⠕⠀⠗⠁⠊⠝⠖`)).toEqual('I think it\'s going to rain!')
 })

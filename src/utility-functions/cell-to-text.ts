@@ -1,40 +1,67 @@
 import { binaryToBraille as b2b } from './cell-to-braille'
+import { alphabeticWordsigns, strongContractions, strongGroupsigns } from './mappings/contractions'
+import { standAlone } from './rules'
 
 export const NUMBER_INDICATOR = b2b["3456"]
 export const EMPTY_CELL = b2b[""];
 
 export function cellToText(cell: string, previousCell?: string, nextCell?: string): string {
-    if (previousCell === b2b["4"]) {
-        return fourPrefix[cell]
+
+    // These are the 8 possible prefixes
+    switch (previousCell) {
+        case b2b["3456"]:
+            return threeFourFiveSixPrefix[cell] || lowerCaseLetters[cell] || ""
+        case b2b["4"]:
+            return fourPrefix[cell]
+        case b2b["45"]:
+            break;
+        case b2b["456"]:
+            return fourFiveSixPrefix[cell]
+        case b2b["5"]:
+            return fivePrefix[cell]
+        case b2b["46"]:
+            return fourSixPrefix[cell]
+        case b2b["56"]:
+            break;
+        case b2b["6"]:
+            return sixPrefix[cell]
+        default:
+            break;
     }
-    if (previousCell === b2b["46"]) {
-        return fourSixPrefix[cell]
-    }
-    if (previousCell === b2b["5"]) {
-        return fivePrefix[cell]
-    }
+
     if (cell === b2b["236"] && (!previousCell || previousCell === EMPTY_CELL)) {
         return blankOrNoPrefix[cell]
     }
-    if (previousCell === b2b["456"]) {
-        return fourFiveSixPrefix[cell]
-    }
+
     if (cell === NUMBER_INDICATOR) {
         if (nextCell && threeFourFiveSixPrefix[nextCell]) {
             return ''
         }
     }
-    if (previousCell === NUMBER_INDICATOR) {
-        return threeFourFiveSixPrefix[cell] || unprefixed[cell]
-    }
-    if (previousCell === b2b["6"]) {
-        return sixPrefix[cell]
+
+    let strongContraction = strongContractions[cell]
+    if (strongContraction) {
+        return strongContraction
     }
 
-    return unprefixed[cell]
+    let punctuation = singleCellPunctuation[cell]
+    if (punctuation) {
+        return punctuation
+    }
+
+    if (standAlone("", "", previousCell || "", nextCell || "", "", "")) {
+        return alphabeticWordsigns[cell]
+    }
+
+    let strongGroupsign = strongGroupsigns[cell]
+    if (strongGroupsign) {
+        return strongGroupsign
+    }
+
+    return lowerCaseLetters[cell] || ""
 }
 
-const unprefixed: { [key: string]: string } = {
+const lowerCaseLetters: { [key: string]: string } = {
     // Letters
     '⠁': 'a',
     '⠃': 'b',
@@ -62,8 +89,9 @@ const unprefixed: { [key: string]: string } = {
     '⠭': 'x',
     '⠽': 'y',
     '⠵': 'z',
+}
 
-    // Other
+const singleCellPunctuation: { [key: string]: string } = {
     '⠂': ',',  // Comma
     '⠆': ";",  // Semi-Colon
     '⠒': ":",  // Colon
@@ -75,13 +103,6 @@ const unprefixed: { [key: string]: string } = {
     '⠀': ' ',  // Braille space
     '⠴': '”',  // Right Double Quote
     '⠼': '#',   // Number Indicator
-
-    // Strong contractions
-    '⠯': 'and',
-    '⠿': 'for',
-    '⠷': 'of',
-    '⠮': 'the',
-    '⠾': 'with',
 }
 
 const blankOrNoPrefix: { [key: string]: string } = {
